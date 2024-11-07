@@ -33,4 +33,6 @@ runs:
         cmake --build . --target all
       working-directory: ${{ runner.temp }}/absl/
     - shell: bash
+      run: mkdir -p ~/.local/include/
+    - shell: bash
       run: mv ${{ runner.temp }}/absl/build/absl/ ~/.local/include/absl/
