@@ -36,3 +36,5 @@ runs:
       run: mkdir -p ~/.local/include/
     - shell: bash
       run: mv ${{ runner.temp }}/absl/build/absl/ ~/.local/include/absl/
+    - shell: bash
+      run: echo "CMAKE_INCLUDE_PATH=~/.local/include/absl/" >> $GITHUB_ENV
