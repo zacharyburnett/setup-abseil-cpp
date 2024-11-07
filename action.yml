@@ -32,8 +32,5 @@ runs:
         cmake -DCMAKE_CXX_STANDARD=${{ inputs.cmake-cxx-standard }} ..
         cmake --build . --target all
       working-directory: ${{ runner.temp }}/absl/
-
-outputs:
-  lib:
-    description: "installed library path"
-    value: "${{ runner.temp }}/absl/build/lib/pkgconfig/"
+    - shell: bash
+      run: mv ${{ runner.temp }}/absl/build/absl/ ~/.local/include/absl/
