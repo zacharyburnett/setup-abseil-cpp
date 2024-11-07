@@ -30,7 +30,7 @@ runs:
       run: |
         mkdir build/ && cd build/
         cmake -DCMAKE_CXX_STANDARD=${{ inputs.cmake-cxx-standard }} ..
-        cmake --build . --target install
+        cmake --build . --target all
       working-directory: ${{ runner.temp }}/absl/
 
 outputs:
