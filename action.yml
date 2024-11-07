@@ -25,16 +25,15 @@ runs:
         repository: abseil/abseil-cpp
         path: ./_abseil-cpp/
     - shell: bash
-      run: mkdir ./_abseil-cpp/build/
-    - uses: actions/cache@6849a6489940f00c2f30c0fb92c6274307ccb58a # v4.1.2
-      with:
-        path: ./_abseil-cpp/build/
-        key: abseil-cpp-${{ runner.os }}-${{ runner.arch }}
+      run: mv ./_abseil-cpp/ ${{ runner.temp }}/absl/
     - shell: bash
       run: |
+        mkdir build/ && cd build/
         cmake -DCMAKE_CXX_STANDARD=${{ inputs.cmake-cxx-standard }} ..
         cmake --build . --target install
-        cmake --install .
-      working-directory: ./_abseil-cpp/build/
-    - shell: bash
-      run: rm -rf ./_abseil-cpp/
+      working-directory: ${{ runner.temp }}/absl/
+
+outputs:
+  lib:
+    description: "installed library path"
+    value: "${{ runner.temp }}/absl/build/lib/pkgconfig/"
