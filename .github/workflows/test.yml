@@ -28,8 +28,9 @@ jobs:
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
       - uses: ./
       - run: mkdir hello_world/build/
-      - run: cmake --debug-output ..
+      - run: cmake ..
         working-directory: hello_world/build/
-      - run: make install -v
+      - run: cmake --build . --target hello_world
         working-directory: hello_world/build/
-      - run: ./hello_world/build/hello_world
+      - run: ./hello_world
+        working-directory: hello_world/build/
