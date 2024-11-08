@@ -22,12 +22,14 @@ jobs:
       fail-fast: false
     runs-on: ${{ matrix.runs-on }}
     steps:
+      - run: |
+          gcc -print-search-dirs
+          clang -print-search-dirs
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
       - uses: ./
-      - run: mkdir ./build/
-        working-directory: hello_world/
-      - run: |
-          cmake ..
-          make install -v
-        working-directory: ./hello_world/build/
+      - run: mkdir hello_world/build/
+      - run: cmake --debug-output ..
+        working-directory: hello_world/build/
+      - run: make install -v
+        working-directory: hello_world/build/
       - run: ./hello_world/build/hello_world
