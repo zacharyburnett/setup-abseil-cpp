@@ -28,6 +28,6 @@ jobs:
         working-directory: hello_world/
       - run: |
           cmake ..
-          cmake --build . --target hello_world
+          make install -v
         working-directory: ./hello_world/build/
       - run: ./hello_world/build/hello_world
