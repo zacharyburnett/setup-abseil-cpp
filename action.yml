@@ -44,6 +44,9 @@ runs:
       run: cmake ${{ inputs.cmake-build-args }} ..
       working-directory: ./_abseil-cpp/build/
     - shell: bash
+      run: make -j $(nprocs)
+      working-directory: ./_abseil-cpp/build/
+    - shell: bash
       run: sudo make install
       working-directory: ./_abseil-cpp/build/
     - if: inputs.abseil-version != '' && steps.build-cache.cache-hit != 'true'
