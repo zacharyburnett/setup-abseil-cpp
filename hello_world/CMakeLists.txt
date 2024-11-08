@@ -1,12 +1,12 @@
 cmake_minimum_required(VERSION 3.16)
 
-project(my_project)
+# at the top-side
+find_package(PkgConfig REQUIRED)
+pkg_check_modules(ABSEIL REQUIRED abseil)
 
-# Abseil requires C++14
-set(CMAKE_CXX_STANDARD 14)
-
-# Process Abseil's CMake build system
-# add_subdirectory(abseil-cpp)
+# and after the add_executable() line
+target_include_directories(hello_world PUBLIC ${ABSEIL_INCLUDE_DIRS})
+target_link_libraries(hello_world ${ABSEIL_LIBRARIES})
 
 add_executable(hello_world hello_world.cc)
 
