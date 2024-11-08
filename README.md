@@ -32,18 +32,8 @@ jobs:
 
 ## Inputs
 
-```yaml
-inputs:
-  cmake-build-args:
-    description: "arguments to pass to CMake"
-    required: false
-    default: "-DCMAKE_CXX_STANDARD=17 -DABSL_PROPAGATE_CXX_STD=ON -DABSL_ENABLE_INSTALL=ON -DBUILD_TESTING=off"
-  cmake-version:
-    description: "version of CMake to use"
-    required: false
-    default: ""
-  abseil-version:
-    description: "tag or ref of `abseil/abseil-cpp`"
-    required: false
-    default: "20240722.0"
-```
+|                    |         `description`             | `required` | `default` |
+| ------------------ | --------------------------------- | ---------- | --------- |
+| `cmake-build-args` | arguments to pass to CMake        |  `false`   | `"-DCMAKE_CXX_STANDARD=17 -DABSL_PROPAGATE_CXX_STD=ON -DABSL_ENABLE_INSTALL=ON -DBUILD_TESTING=off"` |
+| `cmake-version `   | version of CMake to use           |  `false`   | `""` |
+| `abseil-version`   | tag or ref of `abseil/abseil-cpp` |  `false`   | `"20240722.0"` |
