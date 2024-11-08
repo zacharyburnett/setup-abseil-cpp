@@ -8,7 +8,7 @@ inputs:
   abseil-version:
     description: "tag or ref of `abseil/abseil-cpp`"
     required: false
-    default: ""
+    default: "20240722.0"
   cmake-build-args:
     description: "arguments to pass to CMake"
     required: false
