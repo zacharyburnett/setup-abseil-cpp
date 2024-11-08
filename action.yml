@@ -1,26 +1,22 @@
 name: abseil-cpp
-description: 'Builds `abseil/abseil-cpp` and installs to `~/.local/`'
+description: 'Builds and installs `abseil/abseil-cpp`'
 branding:
   icon: package
   color: yellow
 
 inputs:
-  abseil-version:
-    description: "tag or ref of `abseil/abseil-cpp`"
-    required: false
-    default: "20240722.0"
   cmake-build-args:
     description: "arguments to pass to CMake"
     required: false
-    default: "-DABSL_ENABLE_INSTALL=ON -DABSL_PROPAGATE_CXX_STD=ON -DBUILD_TESTING=off"
+    default: "-DCMAKE_CXX_STANDARD=17 -DABSL_PROPAGATE_CXX_STD=ON -DABSL_ENABLE_INSTALL=ON -DBUILD_TESTING=off"
   cmake-version:
     description: "version of CMake to use"
     required: false
     default: ""
-  cmake-cxx-standard:
-    description: "standard to pass to CMake"
+  abseil-version:
+    description: "tag or ref of `abseil/abseil-cpp`"
     required: false
-    default: "17"
+    default: "20240722.0"
 
 runs:
   using: composite
@@ -36,7 +32,7 @@ runs:
     - shell: bash
       run: |
         mkdir build/ && cd build/
-        cmake -DCMAKE_CXX_STANDARD=${{ inputs.cmake-cxx-standard }} ${{ inputs.cmake-build-args }} ..
+        cmake ${{ inputs.cmake-build-args }} ..
         sudo make install
       working-directory: ./_abseil-cpp/
     - shell: bash
