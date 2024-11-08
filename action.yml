@@ -36,8 +36,8 @@ runs:
     - shell: bash
       run: |
         mkdir build/ && cd build/
-        cmake -DCMAKE_CXX_STANDARD=${{ inputs.cmake-cxx-standard }} ${{ inputs.cmake-build-args }} -DCMAKE_INSTALL_PREFIX=~/.local/ ..
-        make install
+        cmake -DCMAKE_CXX_STANDARD=${{ inputs.cmake-cxx-standard }} ${{ inputs.cmake-build-args }} ..
+        sudo make install
       working-directory: ./_abseil-cpp/
     - shell: bash
       run: rm -rf ./_abseil-cpp/
