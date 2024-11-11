@@ -44,7 +44,7 @@ runs:
       run: cmake ${{ inputs.cmake-build-args }} ..
       working-directory: ./_abseil-cpp/build/
     - shell: bash
-      run: cmake --build . --parallel 2
+      run: cmake --build . --parallel=10 --target=install
       working-directory: ./_abseil-cpp/build/
     - if: inputs.abseil-version != '' && steps.build-cache.cache-hit != 'true'
       uses: actions/cache/save@6849a6489940f00c2f30c0fb92c6274307ccb58a # v4.1.2
