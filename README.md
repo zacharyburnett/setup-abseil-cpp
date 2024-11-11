@@ -22,11 +22,9 @@ jobs:
           abseil-version: "20240722.0"
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
       - run: mkdir build
-      - run: cmake -DCMAKE_CXX_STANDARD=17 -DCMAKE_PREFIX_PATH=/usr/local/lib/ -DBUILD_TESTS=OFF ..
+      - run: cmake ..
         working-directory: build/
-      - run: make -j $(nproc)
-        working-directory: build/
-      - run: sudo make install
+      - run: sudo cmake --build . --parallel=2
         working-directory: build/
 ```
 
