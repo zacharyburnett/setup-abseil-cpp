@@ -16,7 +16,7 @@ jobs:
       fail-fast: false
     runs-on: ${{ matrix.runs-on }}
     steps:
-      - uses: zacharyburnett/setup-abseil-cpp@cb29bd8e459ccdabb0f7280ccdd3885479e4cf01 # 1.0.1
+      - uses: zacharyburnett/setup-abseil-cpp@41fabae9b8c6a76c1b9612c8611c50b498bbeda1 # 1.0.3
         with:
           cmake-build-args: "-DCMAKE_CXX_STANDARD=17 -DABSL_PROPAGATE_CXX_STD=ON -DABSL_ENABLE_INSTALL=ON -DBUILD_TESTING=off -DCMAKE_POSITION_INDEPENDENT_CODE=ON"
           abseil-version: "20240722.0"
