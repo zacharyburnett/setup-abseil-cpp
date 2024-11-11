@@ -30,23 +30,23 @@ runs:
       with:
         path: ./_abseil-cpp/
         key: abseil-cpp-${{ inputs.abseil-version }}-${{ runner.os }}-${{ runner.arch }}
-    - if: inputs.abseil-version == '' || steps.build-cache.cache-hit != 'true'
+    - if: inputs.abseil-version == '' || steps.build-cache.cache-hit
       uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
       with:
         repository: abseil/abseil-cpp
         ref: ${{ inputs.abseil-version }}
         path: ./_abseil-cpp/
-    - if: inputs.abseil-version == '' || steps.build-cache.cache-hit != 'true'
+    - if: inputs.abseil-version == '' || steps.build-cache.cache-hit
       shell: bash
       run: mkdir ./_abseil-cpp/build/
-    - if: inputs.abseil-version == '' || steps.build-cache.cache-hit != 'true'
+    - if: inputs.abseil-version == '' || steps.build-cache.cache-hit
       shell: bash
       run: cmake ${{ inputs.cmake-build-args }} ..
       working-directory: ./_abseil-cpp/build/
     - shell: bash
       run: sudo cmake --build . --parallel=8 --target=install
       working-directory: ./_abseil-cpp/build/
-    - if: inputs.abseil-version != '' && steps.build-cache.cache-hit != 'true'
+    - if: inputs.abseil-version != '' && steps.build-cache.cache-hit
       uses: actions/cache/save@6849a6489940f00c2f30c0fb92c6274307ccb58a # v4.1.2
       with:
         path: ./_abseil-cpp/
