@@ -1,4 +1,4 @@
-name: abseil-cpp
+name: setup-abseil-cpp
 description: 'Builds and installs `abseil/abseil-cpp`'
 branding:
   icon: package
